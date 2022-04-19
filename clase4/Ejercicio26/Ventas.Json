@@ -1,2 +1,3 @@
 [{"usuarioID":"1","producto_cod_barras":"123456","cantidadItems":"2","ID":1},
-{"usuarioID":"1","producto_cod_barras":"123457","cantidadItems":"2","ID":2}]
+{"usuarioID":"1","producto_cod_barras":"123457","cantidadItems":"2","ID":2},
+{"usuarioID":"1","producto_cod_barras":"123456","cantidadItems":"2","ID":3}]

@@ -35,7 +35,7 @@ class RealizarVenta {
    
   static function ValidarVenta($arrayProducto,$ArrayUsuarios,$RealizarVenta,$pathVentas)
   {
-      $retorno='';
+    $retorno='';
     $arrayVentas=LeerJSON($pathVentas);
     $existeProducto=Producto::ExisteProducto($arrayProducto,$RealizarVenta->producto_cod_barras,$RealizarVenta->cantidadItems);
     $existeUsuario=Usuario::ExisteUsuario($ArrayUsuarios,$RealizarVenta->usuarioID);
@@ -43,6 +43,7 @@ class RealizarVenta {
     {
         $RealizarVenta->ID=self::ObtieneIDVenta();
         GuardarJson($arrayVentas,$pathVentas,$RealizarVenta);
+      
         $retorno= "Venta Realizada";
     }
     else{

@@ -89,4 +89,16 @@ class Producto
         }
         return false;
     }
+    static function RestarStock($arrayProductos,$codBarras,$cantidad,$path)
+    {
+        foreach ($arrayProductos as $x => $val) {
+            if ($val->cod_barras ==  $codBarras && $val->stock>$cantidad) {
+                $val->stock =$val->stock - $cantidad;
+               
+                break;
+            }
+        }
+      return  GuardarJson($arrayProductos, $path, null);
+        
+    }
 }

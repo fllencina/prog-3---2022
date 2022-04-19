@@ -74,7 +74,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
             $UsuarioID=$_POST["UsuarioID"];
 
            $Venta= new RealizarVenta($UsuarioID,$producto_cod_barras,$cantidadItems);
-           echo RealizarVenta::ValidarVenta($arrayJsonProducto,$arrayJsonUsuarios,$Venta,$pathVentas);
+           $ResultadoVenta= RealizarVenta::ValidarVenta($arrayJsonProducto,$arrayJsonUsuarios,$Venta,$pathVentas);
+           if($ResultadoVenta=="Venta Realizada")
+           {
+               Producto::RestarStock($arrayJsonProducto,$producto_cod_barras, $cantidadItems,$pathProductos);
+           }
+           echo $ResultadoVenta;
         }
         else {
             echo "no recibe datos";
