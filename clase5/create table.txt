@@ -1,0 +1,7 @@
+create tables
+
+
+CREATE TABLE `clase5`.`usuario` ( `id` INT NOT NULL AUTO_INCREMENT , `nombre` VARCHAR(50) NOT NULL , `apellido` VARCHAR(50) NOT NULL , `clave` VARCHAR(20) NOT NULL , `mail` VARCHAR(50) NOT NULL , `fecha_de_registro` DATE NOT NULL , `localidad` VARCHAR(50) NOT NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `clase5`.`producto` ( `id` INT NOT NULL AUTO_INCREMENT , `codBarras` INT NOT NULL , `nombre` VARCHAR(50) NOT NULL , `tipo` VARCHAR(20) NOT NULL , `stock` INT NOT NULL , `precio` FLOAT NOT NULL , `fecha_creado` DATE NOT NULL , `fecha_modificado` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `clase5`.`ventas` ( `id` INT NOT NULL AUTO_INCREMENT , `id_producto` INT NOT NULL , `id_usuario` INT NOT NULL , `cantidad` INT NOT NULL , `fecha_de_venta` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+

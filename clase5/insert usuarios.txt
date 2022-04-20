@@ -1,0 +1,17 @@
+
+
+insert usuarios
+
+INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `clave`, `mail`, `fecha_de_registro`, `localidad`) VALUES ('101', 'Esteban', 'Madou', '2345', 'dkantor0@example.com', '2021-07-01', 'Quilmes');
+
+
+INSERT INTO `usuario` ( `nombre`, `apellido`, `clave`, `mail`, `fecha_de_registro`, `localidad`) 
+VALUES ( 'German', 'Gerram', '1234', 'ggerram1@hud.gov', '2020-08-05', 'Berazategui'),
+
+		( 'Deloris', 'Fosis', '5678', 'bsharpe2@wisc.edu', '2020-11-28', 'Avellaneda'),
+
+		( 'Brok', 'Neiner', '4567', 'bsharpe2@wisc.edu', '2020-12-8', 'Quilmes'),
+	
+		( 'Garrick', 'Brent', '6789', 'bblazic3@desdev.cn', '2020-12-17', 'Moron'),
+
+		( 'Bili', 'Baus', '0123', 'gbrent4@theguardia', '2020-11-27', 'Moreno')

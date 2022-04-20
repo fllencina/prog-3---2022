@@ -1,0 +1,78 @@
+1. Obtener los detalles completos de todos los usuarios, ordenados alfabéticamente.
+
+select * from usuario order by apellido 
+
+2. Obtener los detalles completos de todos los productos líquidos.
+
+select * from producto where tipo= 'liquido'
+
+3. Obtener todas las compras en los cuales la cantidad esté entre 6 y 10 inclusive.
+
+select * from ventas where stock between 6 and 10
+
+4. Obtener la cantidad total de todos los productos vendidos.
+
+select sum(cantidad) from ventas
+
+5. Mostrar los primeros 3 números de productos que se han enviado.
+
+select distinct (id_producto) from ventas limit 3
+
+6. Mostrar los nombres del usuario y los nombres de los productos de cada venta.
+
+select ventas.id,usuario.nombre as nombre_Usuario,usuario.apellido as apellido_Usuario, producto.nombre as nombre_Producto,ventas.cantidad from ventas
+inner join usuario on usuario.id= ventas.id_usuario
+inner join producto on producto.id=ventas.id_producto
+
+7. Indicar el monto (cantidad * precio) por cada una de las ventas.
+
+select ventas.id,ventas.id_producto,ventas.id_usuario,ventas.cantidad,(producto.precio*ventas.cantidad) as precio_de_venta from ventas 
+inner join producto on producto.id=ventas.id_producto
+
+8. Obtener la cantidad total del producto 1003 vendido por el usuario 104.
+
+select sum(cantidad)as cantidadVendida from ventas where id_producto=1003 and id_usuario=104
+
+9. Obtener todos los números de los productos vendidos por algún usuario de‘Avellaneda’.
+
+select ventas.id_producto as identificadorProducto  from ventas 
+inner join usuario on usuario.id=ventas.id_usuario and usuario.localidad like '%Avellaneda%'
+
+10.Obtener los datos completos de los usuarios cuyos nombres contengan la letra ‘u’.
+
+select * from usuario where nombre like '%u%'
+select * from usuario where apellido like '%u%'
+
+select * from usuario where nombre  like '%u%' or apellido like '%u%'
+
+11. Traer las ventas entre junio del 2020 y febrero 2021.
+
+select * from ventas where fecha_creado between '2020-6-1' and '2021-2-28'
+
+12. Obtener los usuarios registrados antes del 2021.
+
+select * from usuario where fecha_creado< '2021-1-1'
+
+13. Agregar el producto llamado ‘Chocolate’, de tipo Sólido y con un precio de 25,35.
+
+insert into producto (nombre,tipo,precio,stock,codBarras,fecha_creado,fecha_modificado)values('chocolate','solido','25,35',1,'77900311','2022-04-19','2022-04-19')
+
+14. Insertar un nuevo usuario .
+
+insert into usuario (nombre, apellido, fecha_de_registro,localidad,mail,clave) values ('fernanda', 'lencina','2022-4-19','quilmes','fernanda.lencina@gmail.com', '1234')
+
+15. Cambiar los precios de los productos de tipo sólido a 66,60.
+
+update producto set precio=66.60 where tipo='Solido'
+
+16. Cambiar el stock a 0 de todos los productos cuyas cantidades de stock sean menores a 20 inclusive.
+
+update producto set stock=0 where stock<=20
+
+17. Eliminar el producto número 1010.
+
+delete from producto where id=1010
+
+18. Eliminar a todos los usuarios que no han vendido productos.
+
+delete from usuario  where id not in ( select id_usuario from ventas)
