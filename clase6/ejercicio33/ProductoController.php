@@ -50,7 +50,7 @@ class ProductoController
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("
 				update producto 
-				set codBarras=:codBarras,
+				set 
 				nombre=:nombre,
 				tipo=:tipo,
 				stock=:stock,
@@ -59,7 +59,7 @@ class ProductoController
 				fecha_modificado=:fecha_modificado			
 				WHERE id=:id");
         $consulta->bindValue(':id', $this->ID, PDO::PARAM_INT);
-        $consulta->bindValue(':codBarras', $this->codBarras, PDO::PARAM_INT);
+       // $consulta->bindValue(':codBarras', $this->codBarras, PDO::PARAM_INT);
         $consulta->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
         $consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);
         $consulta->bindValue(':stock', $this->stock, PDO::PARAM_INT);

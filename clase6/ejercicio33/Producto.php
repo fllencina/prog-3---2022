@@ -145,11 +145,12 @@ class Producto
         }
     }
 
-    function ObtenerUnProducto()
+    static function ObtenerUnProducto($codBarras)
     {
        // echo "entra al obtener un producto de producto";
-        return ProductoController::TraerUnProducto($this->codBarras);
+        return ProductoController::TraerUnProducto($codBarras);
     }
+    
 
     static function MostrarLista($ProductosArray)
     {
@@ -181,5 +182,39 @@ class Producto
             }
         }
         return  GuardarJson($arrayProductos, $path, null);
+    }
+
+    function ModificarProductoSQL()
+    {
+        if (self::ValidarCodigoDeBarras($this->codBarras)) {
+            $Producto = self::ObtenerUnProducto($this->codBarras);
+            if (isset($Producto) && $Producto) {
+                //sumar stock y modificar
+                if ($this->codBarras == $Producto->codBarras) {
+                    $Producto->stock = $Producto->stock + $this->stock;
+                    $ProductoController=new ProductoController();
+                    $ProductoController->ID=$Producto->ID;
+                    $ProductoController->codBarras=$Producto->codBarras;
+                    $ProductoController->nombre=$Producto->nombre;
+                    $ProductoController->tipo=$Producto->tipo;
+                    $ProductoController->stock=$Producto->stock;
+                    $ProductoController->precio=$this->precio;
+                    
+                    $ProductoController->fecha_modificado=self::ObtenerFecha();
+
+                    $retorno=$ProductoController->ModificarProductoParametros();
+                    if( $retorno==1)
+                    {
+                        return "Actualizado";
+                    }
+                }
+            } else {
+                //insertar
+                return  "No se pudo actualizar";
+
+              
+
+            }
+        }
     }
 }

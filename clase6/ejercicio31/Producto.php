@@ -145,11 +145,12 @@ class Producto
         }
     }
 
-    function ObtenerUnProducto()
+    static function ObtenerUnProducto($codBarras)
     {
        // echo "entra al obtener un producto de producto";
-        return ProductoController::TraerUnProducto($this->codBarras);
+        return ProductoController::TraerUnProducto($codBarras);
     }
+    
 
     static function MostrarLista($ProductosArray)
     {

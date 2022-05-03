@@ -125,6 +125,16 @@ class usuario
 		}
 		return $retorno;
 	}
+	static function ExisteUsuarioSQL($idUsuario)
+	{
+		$UsuarioObtenido=UsuarioController::TraerUnUsuario($idUsuario);
+		if(isset($UsuarioObtenido) && $UsuarioObtenido)
+		{
+			return true;
+		}
+		return false;
+	}
+	
 }
 
 

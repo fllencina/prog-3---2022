@@ -104,13 +104,13 @@ class UsuarioController
         return $consulta->fetchAll(PDO::FETCH_CLASS, "UsuarioController");
     }
 
-    public static function TraerUnCd($id)
+    public static function TraerUnUsuario($id)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("select * from usuario where id = $id");
         $consulta->execute();
-        $cdBuscado = $consulta->fetchObject('usuario');
-        return $cdBuscado;
+        $UsuarioBuscado = $consulta->fetchObject('usuarioController');
+        return $UsuarioBuscado;
     }
 
     public static function TraerUnUsuarioMail($mail)
