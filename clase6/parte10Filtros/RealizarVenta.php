@@ -10,15 +10,15 @@ class RealizarVenta
 {
 
     public $usuarioID;
-    public $codBarras;
+    public $productoID;
     public $cantidadItems;
     public $fecha_de_venta;
     public $ID;
 
-    function __construct($usuarioID, $codBarras, $cantidadItems)
+    function __construct($usuarioID, $productoID, $cantidadItems)
     {
         $this->usuarioID = $usuarioID;
-        $this->codBarras = $codBarras;
+        $this->productoID = $productoID;
         $this->cantidadItems = $cantidadItems;
         $this->fecha_de_venta = self::ObtenerFecha();
     }
@@ -103,15 +103,14 @@ class RealizarVenta
         $strRet = "<ul>";
 
         for ($i = 0; $i < count($VentasArray); $i++) {
-            $strRet .= "<li>" . "Codigo de barras: " . $VentasArray[$i]->cod_barras . ", usuarioID: " . $VentasArray[$i]->usuarioID . ", cantidad: " . $VentasArray[$i]->cantidadItems . "</li>";
+            $strRet .= "<li>" . "ProductoID " . $VentasArray[$i]->productoID . ", usuarioID: " . $VentasArray[$i]->usuarioID . ", cantidad: " . $VentasArray[$i]->cantidadItems . "</li>";
         }
         $strRet .=  "</ul>";
         return $strRet;
     }
-
     static function MostrarVentas($min,$max)
     {
         $VentasArray=RealizarVentaController::TraerVentasPorRango($min,$max);
-        echo self::MostrarLista($VentasArray);
+        return self::MostrarLista($VentasArray);
     }
 }
