@@ -22,6 +22,8 @@ K. Mostrar las ventas entre dos fechas del año.
 Lencina Fernanda -->
 
 
+
+
 <?php
 require_once "Usuario.php";
 require_once "Producto.php";
@@ -36,9 +38,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
 //      echo  "<br> B. Obtener los detalles completos de todos los productos y poder ordenarlos
 // alfabéticamente de forma ascendente y descendente. <br><br> " .Producto::MostrarProductosSQL("DESC");
 
-$min=6;
-$max=10;
-echo "<br> C. Obtener todas las compras filtradas entre dos cantidades. <br><br>" . RealizarVenta::MostrarVentas($min,$max);
+// $min=6;
+// $max=10;
+// echo "<br> C. Obtener todas las compras filtradas entre dos cantidades. <br><br>" . RealizarVenta::MostrarVentas($min,$max);
+
+
         break;
     case 'POST':
        
