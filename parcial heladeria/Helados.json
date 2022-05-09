@@ -1,0 +1,3 @@
+[{"sabor":"frutilla","precio_bruto":"100","tipo":"agua","cantidad":25,"id":1},
+{"sabor":"frutilla","precio_bruto":"100","tipo":"crema","cantidad":26,"id":2},
+{"sabor":"chocolate","precio_bruto":"100","tipo":"crema","cantidad":"13","id":3}]
