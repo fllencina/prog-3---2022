@@ -146,10 +146,11 @@ class Venta
 
     static function ObtenerUnaVenta($numeroPedido)
     {
+
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
         $consulta = $objetoAccesoDato->RetornarConsulta("select * from venta where numeroPedido =$numeroPedido");
         $consulta->execute();
-        return  $consulta->fetchAll(PDO::FETCH_CLASS, 'venta');
+        return  $consulta->fetchObject('venta');
     }
     static function ModificarVenta($numeroPedido, $sabor, $mail, $tipo, $cantidad)
     {
@@ -179,21 +180,35 @@ class Venta
     static function EliminarVenta($numeroPedido,$pathBKP)
     {
         $venta = self::ObtenerUnaVenta($numeroPedido);
+        //var_dump($venta);
         if (isset($venta) && $venta) {
-            echo move_uploaded_file($venta->imagen, $pathBKP);
-            // $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-            // $consulta = $objetoAccesoDato->RetornarConsulta("
-			// 	delete 
-			// 	from venta 				
-			// 	WHERE numeroPedido=:numeroPedido");
-            // $consulta->bindValue(':numeroPedido', $numeroPedido, PDO::PARAM_INT);
-            // $consulta->execute();
-            // if ($consulta->rowCount() >= 1) {
+           
+            $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+            $consulta = $objetoAccesoDato->RetornarConsulta("
+				delete 
+				from venta 				
+				WHERE numeroPedido=:numeroPedido");
+            $consulta->bindValue(':numeroPedido', $numeroPedido, PDO::PARAM_INT);
+            $consulta->execute();
+            echo $consulta->rowCount();
+            if ($consulta->rowCount() >= 1) {
+             
+                $destino =$pathBKP.str_replace("./ImagenesDeLaVenta/", "",$venta->imagen );
+              //echo $venta->imagen;
+              //echo $destino;
+              if( !rename($venta->imagen, $destino) ) {  
+                return "Eliminacion correcta, no se pudo mover la imagen a Backup";
+            }  
+            else {  
+                return "Eliminacion correcta"; 
+            }
+            
                 
-            //     return "Eliminacion correcta";
-            // }   
-            // return "La venta a eliminar no esta registrada.";
+              
+            }   
+            return "La venta a eliminar no esta registrada.";
         }
     }
+    
     
 }

@@ -1,3 +1,4 @@
-[{"sabor":"frutilla","precio_bruto":"100","tipo":"agua","cantidad":25,"id":1},
-{"sabor":"frutilla","precio_bruto":"100","tipo":"crema","cantidad":26,"id":2},
-{"sabor":"chocolate","precio_bruto":"100","tipo":"crema","cantidad":"13","id":3}]
+[{"sabor":"frutilla","precio_bruto":"150","tipo":"agua","cantidad":8,"id":1},
+{"sabor":"frutilla","precio_bruto":"150","tipo":"crema","cantidad":39,"id":2},
+{"sabor":"chocolate","precio_bruto":"100","tipo":"crema","cantidad":"13","id":3},
+{"sabor":"dulce de leche","precio_bruto":"150","tipo":"crema","cantidad":39,"id":4}]
