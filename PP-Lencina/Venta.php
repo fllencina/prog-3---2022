@@ -9,14 +9,15 @@ class Venta
     public $fechaPedido;
     public $numeroPedido;
     public $imagen;
+    public $eliminado;
 
     function __contruct()
     {
-        // echo "llega a constructor";
+       
     }
     function nuevaVenta($mail, $sabor, $tipo, $cantidad,  $numeroPedido, $pathImagen)
     {
-        //echo "llega a nuevaventa";
+       
         $venta = new Venta();
         $venta->mail = $mail;
         $venta->sabor = $sabor;
@@ -25,6 +26,7 @@ class Venta
         $venta->fechaPedido = self::ObtenerFecha();
         $venta->numeroPedido = $numeroPedido;
         $venta->imagen = $pathImagen;
+        $venta->eliminado=0;
         return $venta;
     }
     static function ObtenerFecha()
@@ -94,13 +96,32 @@ class Venta
         return $Retorno;
     }
 
-    static function CantidadVendidas()
+    static function MostrarLista($Array)
     {
-        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("select sum(venta.cantidad) as totalVendidas from venta");
-        $consulta->execute();
-        return $consulta->fetch(PDO::FETCH_ASSOC)['totalVendidas'];
+        $strRet = "<ul>";
+
+        for ($i = 0; $i < count($Array); $i++) {
+            $strRet .= "<li>" . "mail: " . $Array[$i]->mail . ", sabor: " . $Array[$i]->sabor . ", tipo: " . $Array[$i]->tipo . ", cantidad: " . $Array[$i]->cantidad . ", fechaPedido: " . $Array[$i]->fechaPedido .  ", numeroPedido: " . $Array[$i]->numeroPedido  . "</li>";
+        }
+        $strRet .=  "</ul>";
+        return $strRet;
     }
+    public static function TraerVentasDeUnDia($fecha=null)
+    {   
+        $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+        
+        if($fecha==null)
+        {
+
+           $fecha = date('Y-m-d', time() - 60 * 60 * 24);
+        }
+        $consulta = $objetoAccesoDato->RetornarConsulta("select * from venta where fechaPedido ='$fecha'");
+        $consulta->execute();
+        $ventas = $consulta->fetchAll(PDO::FETCH_CLASS, 'venta');
+
+        return Venta::MostrarLista($ventas);
+    }
+    
     static function ObtenerVentasPorRango($fechainicio, $fechafin)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
@@ -113,16 +134,6 @@ class Venta
         $Array = $query->fetchAll(PDO::FETCH_CLASS, "Venta");
         return Venta::MostrarLista($Array);
     }
-    static function MostrarLista($Array)
-    {
-        $strRet = "<ul>";
-
-        for ($i = 0; $i < count($Array); $i++) {
-            $strRet .= "<li>" . "mail: " . $Array[$i]->mail . ", sabor: " . $Array[$i]->sabor . ", tipo: " . $Array[$i]->tipo . ", cantidad: " . $Array[$i]->cantidad . ", fechaPedido: " . $Array[$i]->fechaPedido .  ", numeroPedido: " . $Array[$i]->numeroPedido  . "</li>";
-        }
-        $strRet .=  "</ul>";
-        return $strRet;
-    }
     public static function TraerVentasDeUnUsuario($mail)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
@@ -133,7 +144,6 @@ class Venta
         return Venta::MostrarLista($ventas);
     }
 
-
     public static function TraerVentasDeUnSabor($sabor)
     {
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
@@ -143,7 +153,6 @@ class Venta
 
         return Venta::MostrarLista($ventas);
     }
-
     static function ObtenerUnaVenta($numeroPedido)
     {
 
@@ -181,21 +190,26 @@ class Venta
     {
         $venta = self::ObtenerUnaVenta($numeroPedido);
         //var_dump($venta);
+        $eliminado=1;
         if (isset($venta) && $venta) {
            
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
             $consulta = $objetoAccesoDato->RetornarConsulta("
             UPDATE venta
-            SET estado=1				
+            SET  eliminado = :eliminado				
 				WHERE numeroPedido=:numeroPedido");
             $consulta->bindValue(':numeroPedido', $numeroPedido, PDO::PARAM_INT);
+            $consulta->bindValue(':eliminado', $eliminado, PDO::PARAM_INT);
+
             $consulta->execute();
             echo $consulta->rowCount();
             if ($consulta->rowCount() >= 1) {
-             
+                if (!is_dir($pathBKP)) {
+                    mkdir($pathBKP, 0777);
+                }
                 $destino =$pathBKP.str_replace("./ImagenesDeLaVenta/", "",$venta->imagen );
-              //echo $venta->imagen;
-              //echo $destino;
+            //   echo $venta->imagen;
+            //   echo $destino;
               if( !rename($venta->imagen, $destino) ) {  
                 return "Eliminacion correcta, no se pudo mover la imagen a Backup";
             }  
@@ -206,8 +220,9 @@ class Venta
             }   
             return "La venta a eliminar no esta registrada.";
         }
+    
     }
     
     
-    
+
 }
