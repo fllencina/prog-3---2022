@@ -1,6 +1,5 @@
 
-<!-- (2 pts.) borrarVenta.php(por DELETE), debe recibir un número de pedido,se borra la venta y la foto se mueve a
-la carpeta /BACKUPVENTAS -->
+
 
 <?php
 require_once "Venta.php";
