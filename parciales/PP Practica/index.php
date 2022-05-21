@@ -23,9 +23,9 @@ switch ($method) {
             case 'Venta':
                 include 'AltaVenta.php';
                 break;
-                case 'DevolverHelado':
-                    include 'DevolverHelado.php';
-                    break;
+            case 'ConsultasDevoluciones':             
+                include 'ConsultasDevoluciones.php';
+                break;
         }
     case 'PUT':
         include 'ModificarVenta.php';
@@ -35,4 +35,3 @@ switch ($method) {
         include 'BorrarVenta.php';
         break;
 }
-?>

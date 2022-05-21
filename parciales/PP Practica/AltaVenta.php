@@ -14,10 +14,10 @@ if (isset($_POST["sabor"], $_POST["tipo"], $_POST["cantidad"] , $_FILES["archivo
     $cantidad = $_POST["cantidad"];
     $mail = $_POST["mail"];
     $numeroPedido = $_POST["numeroPedido"];
-
+    $cuponID=$_POST["cuponID"];
     if ($tipo == "agua" || $tipo == "crema") {
        
-    echo Venta::ValidarVenta($array,$mail,$sabor,$tipo,$cantidad,$numeroPedido,$path,$_FILES,$pathImagen);
+    echo Venta::ValidarVenta($array,$mail,$sabor,$tipo,$cantidad,$numeroPedido,$path,$_FILES,$pathImagen,$cuponID);
         
     }
     else{

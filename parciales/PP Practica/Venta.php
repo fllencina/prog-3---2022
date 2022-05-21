@@ -1,8 +1,9 @@
 <?php
 require_once "AccesoDatos.php";
 require_once "ManejadorArchivos.php";
+require_once "Cupon.php";
 class Venta
-{ 
+{
     public $mail;
     public $sabor;
     public $tipo;
@@ -11,11 +12,13 @@ class Venta
     public $numeroPedido;
     public $imagen;
     public $eliminado;
+    public $precioPagado;
+    public $PorcentajeDescuento;
 
     function __contruct()
     {
     }
-    function nuevaVenta($mail, $sabor, $tipo, $cantidad,  $numeroPedido, $pathImagen)
+    function nuevaVenta($mail, $sabor, $tipo, $cantidad,  $numeroPedido, $pathImagen, $precioPagado, $porcentajeDescuento)
     {
 
         $venta = new Venta();
@@ -27,6 +30,8 @@ class Venta
         $venta->numeroPedido = $numeroPedido;
         $venta->imagen = $pathImagen;
         $venta->eliminado = 0;
+        $venta->precioPagado = $precioPagado;
+        $venta->porcentajeDescuento = $porcentajeDescuento;
         return $venta;
     }
     static function ObtenerFecha()
@@ -38,7 +43,7 @@ class Venta
     {
         //var_dump($this);
         $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-        $consulta = $objetoAccesoDato->RetornarConsulta("INSERT into Venta(mail,sabor,tipo,cantidad,fechaPedido,numeroPedido,imagen) values(:mail,:sabor,:tipo,:cantidad,:fechaPedido,:numeroPedido,:imagen)");
+        $consulta = $objetoAccesoDato->RetornarConsulta("INSERT into Venta(mail,sabor,tipo,cantidad,fechaPedido,numeroPedido,imagen,precioPagado,porcentajeDescuento) values(:mail,:sabor,:tipo,:cantidad,:fechaPedido,:numeroPedido,:imagen,:precioPagado,:porcentajeDescuento)");
         $consulta->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $consulta->bindValue(':sabor', $this->sabor, PDO::PARAM_STR);
         $consulta->bindValue(':tipo', $this->tipo, PDO::PARAM_STR);
@@ -46,6 +51,9 @@ class Venta
         $consulta->bindValue(':fechaPedido', $this->fechaPedido, PDO::PARAM_STR);
         $consulta->bindValue(':numeroPedido', $this->numeroPedido, PDO::PARAM_INT);
         $consulta->bindValue(':imagen', $this->imagen, PDO::PARAM_STR);
+        $consulta->bindValue(':precioPagado', $this->precioPagado, PDO::PARAM_STR);
+        $consulta->bindValue(':porcentajeDescuento', $this->porcentajeDescuento, PDO::PARAM_INT);
+
 
         // $consulta->bindValue(':numeroPedido', $this->numeroPedido, PDO::PARAM_INT);
 
@@ -53,13 +61,22 @@ class Venta
         return $objetoAccesoDato->RetornarUltimoIdInsertado();
     }
 
-    static function ValidarVenta($arrayPizza, $mail, $sabor, $tipo, $cantidad, $numeroPedido, $path, $archivo, $pathImagen)
+    static function ValidarVenta($array, $mail, $sabor, $tipo, $cantidad, $numeroPedido, $path, $archivo, $pathImagen, $cuponID = null)
     {
-        $retorno = Helado::ExisteHeladoStock($arrayPizza, $sabor, $tipo, $cantidad);
-
+        $retorno = Helado::ExisteHeladoStock($array, $sabor, $tipo, $cantidad);
+        $porcentajeDescuento = 0;
         if ($retorno == 1) {
-
-            $Venta = self::nuevaVenta($mail, $sabor, $tipo, $cantidad, $numeroPedido, $pathImagen);
+            $helado = Helado::ObtenerHelado($array, $sabor, $tipo);
+            $precioPagado = $cantidad * $helado->precio;
+            $porcentajeDescuento = 0;
+            $cupon = Cupon::ObtenerCupon($cuponID);
+            if (isset($cupon) && $cupon && $cupon->estado==0) {
+                $precioPagado  = $precioPagado - (( $precioPagado * $cupon->porcentajeDescuento) / 100);
+                $porcentajeDescuento = $cupon->porcentajeDescuento;
+                Cupon::MarcarUsado($cuponID);
+            }
+            
+            $Venta = self::nuevaVenta($mail, $sabor, $tipo, $cantidad, $numeroPedido, $pathImagen, $precioPagado, $porcentajeDescuento);
 
             $Nombre = $tipo . "-" . $sabor . "-" . explode("@", $mail)[0] . "-" . $Venta->fechaPedido;
             $nameImagen = $archivo["archivo"]["name"];
@@ -70,30 +87,12 @@ class Venta
 
             $Venta->insertarSQL();
             //echo $Nombre;
-            $Venta->GuardarFoto($archivo, $Nombre, $pathImagen);
-            Helado::RestarStock($arrayPizza, $sabor, $tipo, $cantidad, $path);
+            GuardarFoto($archivo, $Nombre, $pathImagen);
+            Helado::RestarStock($array, $sabor, $tipo, $cantidad, $path);
             echo "venta realizada";
         } else {
             echo " no se puede realizar la venta";
         }
-    }
-    function GuardarFoto($file, $Nombre, $pathImagen)
-    {
-        if (!is_dir($pathImagen)) {
-            mkdir($pathImagen, 0777);
-        }
-        $dic = $pathImagen;
-        $nameImagen = $file["archivo"]["name"];
-        //echo $nameImagen;
-        $explode = explode(".", $nameImagen);
-        $tamaño = count($explode);
-        $dic .= $Nombre;
-        $dic .= ".";
-        $dic .= $explode[$tamaño - 1];
-        //echo $dic;
-        $Retorno = false;
-        $Retorno = move_uploaded_file($_FILES["archivo"]["tmp_name"], $dic);
-        return $Retorno;
     }
 
     static function MostrarLista($Array)
@@ -164,11 +163,11 @@ class Venta
         $consulta->execute();
         return  $consulta->fetchObject('venta');
     }
-    static function ModificarVenta($numeroPedido, $sabor, $mail, $tipo, $cantidad,$array,$path)
+    static function ModificarVenta($numeroPedido, $sabor, $mail, $tipo, $cantidad, $array, $path)
     {
         $venta = self::ObtenerUnaVenta($numeroPedido);
         if (isset($venta) && $venta) {
-          //  var_dump($venta);
+            //  var_dump($venta);
             $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
             $consulta = $objetoAccesoDato->RetornarConsulta("UPDATE venta
         SET 
@@ -214,7 +213,7 @@ class Venta
                     mkdir($pathBKP, 0777);
                 }
                 $destino = $pathBKP . str_replace("./ImagenesDeLaVenta/", "", $venta->imagen);
-                  
+
                 if (!rename($venta->imagen, $destino)) {
                     return "Eliminacion correcta, no se pudo mover la imagen a Backup";
                 } else {
@@ -224,5 +223,4 @@ class Venta
             return "La venta a eliminar no esta registrada.";
         }
     }
-    
 }

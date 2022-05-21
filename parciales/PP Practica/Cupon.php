@@ -31,4 +31,46 @@ class Cupon
         $cupon= self::NuevoCupon($devolucion_ID,10);
         GuardarJson($array,"cupones.json",$cupon); 
     }
+    static function ObtenerCupon($id)
+    {
+        $array = LeerJSON("cupones.json");
+
+        foreach ($array as $x => $val) {
+            if ($val->id == $id) {
+                return $val;
+            }
+        }
+        return 0;
+    }
+    static function MarcarUsado($id)
+    {
+        $array = LeerJSON("cupones.json");
+
+        foreach ($array as $x => $val) {
+            if ($val->id == $id) {
+                 $val->estado=1;
+            }
+        }
+        GuardarJson($array,"cupones.json",null);
+        return 0;
+    }
+    static function ListarCupones()
+    {
+        $array=LeerJSON("cupones.json");
+        $tabla="<table><thead><th> <td>DevolucionID</td><td>Estado</td></th><tbody>";
+        
+        foreach ($array as $x => $val) {
+           if($val->estado==0)
+           {
+            $estado="Sin uso";
+           }
+           else{
+            $estado="Usado";
+           }
+           
+            $tabla=$tabla."<tr><td>".$val->devolucion_ID."</td><td>".$estado."</td></tr>"  ; 
+        }
+        $tabla=$tabla."</tbody></thead></table>";
+        return $tabla;
+    }
 }

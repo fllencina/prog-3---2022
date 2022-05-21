@@ -96,6 +96,16 @@ class Helado
         }
         return 0;
     }
+    static function ObtenerHelado($array, $sabor, $tipo)
+    {
+        foreach ($array as $x => $val) {
+
+            if ($val->tipo ==  $tipo && $val->sabor == $sabor ) {
+                return $val;
+            }
+        }
+        return 0;
+    }
     static function RestarStock($array, $sabor, $tipo, $stock, $path)
     {
         foreach ($array as $x => $val) {
