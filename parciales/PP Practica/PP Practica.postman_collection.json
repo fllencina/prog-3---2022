@@ -1,0 +1,968 @@
+{
+	"info": {
+		"_postman_id": "d86e631a-91c8-4f7a-b24b-3cc9f3e31dfd",
+		"name": "PP Practica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parte 1 -carga",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Cargar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sabor",
+									"value": "frutilla",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "crema",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "150",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/frutilla.jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Cargar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Cargar",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Cargar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sabor",
+									"value": "naranja",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "agua",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "101",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "110",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/naranja.jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Cargar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Cargar",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 1- consultar",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sabor",
+									"value": "naranja",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "agua",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Consultas",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sabor",
+									"value": "frutilla",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "agua",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Consultas",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "sabor",
+									"value": "frutilla",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "crema",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Consultas",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 1- AltaVenta",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "sabor",
+									"value": "frutilla",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "crema",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/frutilla.jpg"
+								},
+								{
+									"key": "numeroPedido",
+									"value": "111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Venta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Venta",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "sabor",
+									"value": "naranja",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "crema",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/frutilla.jpg"
+								},
+								{
+									"key": "numeroPedido",
+									"value": "111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Venta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Venta",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "sabor",
+									"value": "naranja",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "agua",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/frutilla.jpg"
+								},
+								{
+									"key": "numeroPedido",
+									"value": "112",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Venta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Venta",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 2-ConsultasVentas",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com"
+								},
+								{
+									"key": "fecha",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha=2022-05-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com"
+								},
+								{
+									"key": "fecha",
+									"value": "2022-05-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=pedro@mail.com&fecha=2022-05-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "mail",
+									"value": "pedro@mail.com"
+								},
+								{
+									"key": "fecha",
+									"value": "2022-05-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&fecha=&fechainicio=2022-05-10&fechafin=2022-05-21",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "mail",
+									"value": "pedro@mail.com",
+									"disabled": true
+								},
+								{
+									"key": "fecha",
+									"value": ""
+								},
+								{
+									"key": "fechainicio",
+									"value": "2022-05-10"
+								},
+								{
+									"key": "fechafin",
+									"value": "2022-05-21"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&fecha=&fechainicio=2022-05-10&fechafin=2022-05-21&sabor=naranja",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "fecha",
+									"value": ""
+								},
+								{
+									"key": "fechainicio",
+									"value": "2022-05-10"
+								},
+								{
+									"key": "fechafin",
+									"value": "2022-05-21"
+								},
+								{
+									"key": "mail",
+									"value": "pedro@mail.com",
+									"disabled": true
+								},
+								{
+									"key": "sabor",
+									"value": "naranja"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&mail=fernanda@mail.com&fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasVentas&fechainicio=2022-05-10&fechafin=2022-05-21&sabor=frutilla&fecha=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasVentas",
+									"value": null
+								},
+								{
+									"key": "fechainicio",
+									"value": "2022-05-10"
+								},
+								{
+									"key": "fechafin",
+									"value": "2022-05-21"
+								},
+								{
+									"key": "sabor",
+									"value": "frutilla"
+								},
+								{
+									"key": "mail",
+									"value": "pedro@mail.com",
+									"disabled": true
+								},
+								{
+									"key": "fecha",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte2 - ModificarVenta",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroPedido\": 111,\r\n    \"sabor\":\"frutilla\",\r\n    \"mail\": \"fernanda@mail.com\",\r\n    \"tipo\":\"crema\",\r\n    \"cantidad\":\"23\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroPedido\": 112,\r\n    \"sabor\":\"naranja\",\r\n    \"mail\": \"fernanda@mail.com\",\r\n    \"tipo\":\"agua\",\r\n    \"cantidad\":\"35\"\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 3 - Eliminar(soft)",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroPedido\":111\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 3 - Devolucion",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?DevolverHelado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "numeroPedido",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "causa",
+									"value": "no es sabor pedido",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Pictures/10411308_10208402128912559_4466214452444787369_n.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?DevolverHelado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "DevolverHelado",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 4 - AltaVenta",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?Consultas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mail",
+									"value": "fernanda@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "sabor",
+									"value": "frutilla",
+									"type": "text"
+								},
+								{
+									"key": "tipo",
+									"value": "crema",
+									"type": "text"
+								},
+								{
+									"key": "cantidad",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/Fernanda/Desktop/Tecnicatura en programacion/2do año/1er cuatrimestre 2do Año/PROG 3/frutilla.jpg"
+								},
+								{
+									"key": "numeroPedido",
+									"value": "113",
+									"type": "text"
+								},
+								{
+									"key": "cuponID",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?Venta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "Venta",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parte 4 - ConsultasDevoluciones",
+			"item": [
+				{
+					"name": "http://localhost/2022/parciales/pp practica/index.php?ConsultasDevoluciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/2022/parciales/pp practica/index.php?ConsultasDevoluciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"2022",
+								"parciales",
+								"pp practica",
+								"index.php"
+							],
+							"query": [
+								{
+									"key": "ConsultasDevoluciones",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
