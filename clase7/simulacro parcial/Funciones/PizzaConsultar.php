@@ -1,8 +1,9 @@
 <?php
 
-require_once "Pizza.php";
-$path = "Pizzas.json";
-$arrayPizza = Pizza::LeerJSON($path);
+require_once "./Parte1/Pizza.php";
+require_once "ManejadorArchivos.php";
+$path="./Parte1/Pizzas.json";
+$arrayPizza = LeerJSON($path);
 if (isset($_POST["sabor"], $_POST["tipo"])) {
     $sabor = $_POST["sabor"];
     $tipo = $_POST["tipo"];

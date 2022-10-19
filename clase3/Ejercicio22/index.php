@@ -14,7 +14,8 @@ Lencina Fernanda -->
 <?php
 require_once "Usuario.php";
 
-require_once "insertUsuarios.php";
+//require_once "insertUsuarios.php";
+require_once "ManejadorArchivos.php";
 
 $path=".\Usuarios.csv";
 
@@ -28,7 +29,7 @@ switch($_SERVER['REQUEST_METHOD'])
     break;
     case 'POST':
     //echo "<br>peticion por post";
-    $arrayUsuarios= Usuario::Leercsv($path);
+    $arrayUsuarios= Leercsv($path);
     echo Usuario::MostrarLista($arrayUsuarios);
     
     if (isset ($_POST["mail"],$_POST["clave"]))

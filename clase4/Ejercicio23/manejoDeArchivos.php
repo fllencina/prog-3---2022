@@ -67,13 +67,16 @@ function Leercsv($path)
 function guardarFoto($file, $postNombre)
 {
     echo "guardarFoto";
-    if (!is_dir('Fotos')) {
-        mkdir('Fotos', 0777);
+    if (!is_dir('./Usuario/')) {
+        mkdir('./Usuario/', 0777);
+    }
+    if (!is_dir('./Usuario/Fotos')) {
+        mkdir('./Usuario/Fotos', 0777);
     }
     if (!is_dir('FotosBackup')) {
         mkdir('FotosBackup', 0777);
     }
-    $dic = "./Fotos/";
+    $dic = "./Usuario/Fotos/";
     $dicBackup = "./FotosBackup/";
     $nameImagen = $file["archivo"]["name"];
 
@@ -96,19 +99,19 @@ function guardarFoto($file, $postNombre)
         copy($dic, $dicBackup);
         $Retorno = move_uploaded_file($_FILES["archivo"]["tmp_name"], $dic);
     }
-    agregarMarcaDeAgua($dic);
+    //agregarMarcaDeAgua($dic);
     return $Retorno;
 }
 function agregarMarcaDeAgua($ruta)
 {
     echo "en agregarMarcaDeAgua";
     // Cargar la estampa y la foto para aplicarle la marca de agua
-    $estampa = imagecreatefrompng('Fotos/ImagenMarcaDeAgua/marca2.png');
+    $estampa = imagecreatefrompng('./Usuario/Fotos/marca2.png');
     $im = imagecreatefromjpeg($ruta);
 
     // Establecer los márgenes para la estampa y obtener el alto/ancho de la imagen de la estampa
-    $margen_dcho = 10;
-    $margen_inf = 10;
+    $margen_dcho = 25;
+    $margen_inf = 25;
     $sx = imagesx($estampa);
     $sy = imagesy($estampa);
 

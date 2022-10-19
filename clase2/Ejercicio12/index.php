@@ -6,45 +6,23 @@ Ejemplo: Se recibe la palabra “HOLA” y luego queda “ALOH”.
 Lencina Fernanda -->
 
 <?php
+require "funciones.php";
+
 //Revisar  -- arreglado
 $palabra=array("H","O","L","A");
-echo "Palabra: <br>";
+$Mostrar= "Palabra: <br>";
+
 	for($i=0;$i<count($palabra);$i++)
 	{
-		echo $palabra[$i];
+		$Mostrar=$Mostrar. $palabra[$i];
 	}
 
-	function InvertirCaracteresReverse($Array)
-	{
-
-		$invertida=array_reverse($Array);
-		echo "<br> Invertida: <br>";
-
-	for($i=0;$i<count($invertida);$i++)
-	{
-		echo $invertida[$i];
-	}
-	}
-
-    InvertirCaracteresReverse($palabra);
-    
-    function InvertirCaracteresFor($Array)
-	{
-        
-		
-		echo "<br> Invertida: <br>";
-        //echo(count($Array));
-	for($i=count($Array) - 1;$i>=0;$i--)
-	{
-        //echo $i;
-		echo $Array[$i];
-	}
-	}
-
-	
-	
-    InvertirCaracteresFor($palabra);
-    ?>
+    $Mostrar=$Mostrar. "<br><br>Metodo 1...............";
+	$Mostrar=$Mostrar. InvertirCaracteres($palabra);
+    $Mostrar=$Mostrar. "<br><br>Metodo 2...............";
+    $Mostrar=$Mostrar. InvertirCaracteresFor($palabra);
+   echo $Mostrar;
+  ?>
 
 
 

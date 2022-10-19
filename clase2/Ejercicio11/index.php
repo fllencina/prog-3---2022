@@ -25,11 +25,6 @@ $CantidadPotencias=4;
 		}
 	}
 
-// function CalcularPotencias($numero, $potencia)
-// {
-//     return pow($numero, $potencia);
-    
-// }
 
 echo $retorno;
 

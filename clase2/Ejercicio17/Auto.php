@@ -48,7 +48,7 @@ class Auto
 		}
 		static function  Add($auto1,$auto2)
 		{
-			$RespuestaAdd;			
+			$RespuestaAdd='';			
 				if($auto1->Equals($auto2))
 				{
 					if($auto1->_color==$auto2->_color)

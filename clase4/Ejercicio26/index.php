@@ -38,8 +38,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         break;
     case 'POST':
-
-
         if (isset($_POST["nombre"], $_POST["mail"], $_POST["clave"], $_FILES)) {
             $nombre = $_POST["nombre"];
             $mail = $_POST["mail"];

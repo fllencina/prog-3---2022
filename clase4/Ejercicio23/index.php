@@ -35,7 +35,7 @@ switch($_SERVER['REQUEST_METHOD'])
         $foto=$_FILES;
 
         $login=new Usuario($nombre,$clave,$mail,$foto);
-
+  
         GuardarJson($arrayJson, "Usuarios.Json", $login);
         array_push($arrayJson,$login);
     }

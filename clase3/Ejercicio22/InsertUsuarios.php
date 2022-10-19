@@ -16,7 +16,7 @@
         array_push($arrayUsuarios, $Usuario4);
         array_push($arrayUsuarios, $Usuario5);
         
-        Usuario::SobreEscribirUsuariosCSV($path,$arrayUsuarios);
+        SobreEscribirUsuariosCSV($path,$arrayUsuarios);
         return $arrayUsuarios;
     }
 ?>

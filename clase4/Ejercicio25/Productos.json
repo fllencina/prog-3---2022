@@ -1,2 +1,4 @@
-[{"cod_barras":"123457","nombre":"agua saborizada","tipo":"bebidas","stock":"1","precio":"10","ID":1},
-{"cod_barras":"123456","nombre":"agua ","tipo":"bebidas","stock":11,"precio":"10","ID":2}]
+[{"cod_barras":"123456","nombre":"Agua saborizada","tipo":"Bebida sin alcohol","stock":200,"precio":"200","ID":1},
+{"cod_barras":"121212","nombre":"Gaseosa","tipo":"Bebida sin alcohol","stock":151,"precio":"250","ID":2},
+{"cod_barras":"212121","nombre":"cerveza","tipo":"Bebida con alcohol","stock":"150","precio":"250","ID":3},
+{"cod_barras":"313131","nombre":"vasos","tipo":"vasos y copas","stock":"150","precio":"150","ID":4}]

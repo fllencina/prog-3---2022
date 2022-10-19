@@ -20,25 +20,25 @@ class Pizza
         {
 
         }
-        $this->id = self::ObtieneIDPizza();
+        $this->id = self::ObtieneID();
     }
 
 
-    static function  ObtieneIDPizza()
+    static function  ObtieneID()
     {
-        if (!file_exists("PizzaID.txt")) {
-            $file = fopen("PizzaID.txt", "w+");
+        if (!file_exists("ID.txt")) {
+            $file = fopen("ID.txt", "w+");
             fwrite($file, 0);
             fclose($file);
         }
 
-        $file = fopen("PizzaID.txt", "r");
-        $idPizza = fgets($file);
+        $file = fopen("ID.txt", "r");
+        $id = fgets($file);
         fclose($file);
-        $file = fopen("PizzaID.txt", "w");
-        fwrite($file, $idPizza + 1);
+        $file = fopen("ID.txt", "w");
+        fwrite($file, $id + 1);
         fclose($file);
-        return $idPizza + 1;
+        return $id + 1;
     }
 
 

@@ -1,31 +1,32 @@
-<!-- PARTE 1 Lencina Fernanda -->
+<!-- PARTE 2 Lencina Fernanda -->
 
 <?php
 
-
-
-
-$caso = $_SERVER['REQUEST_METHOD'];
-switch ($caso) {
+$verbo = $_SERVER['REQUEST_METHOD'];
+switch ($verbo) {
     case "GET":
-        switch (key($_GET)) {
-            case 'cargarpizzaget':
-                include_once "Funciones/PizzaCargar.php";
-                break;
-        }
+
+                include_once "Funciones/PizzaCarga.php";
+
         break;
     case "POST":
         
-               // include_once "Funciones/PizzaConsultar.php";
-                include_once "Funciones/AltaVenta.php";
-        
+                switch (key($_GET)) {
+                        case 'Consultas':
+                                include 'Funciones/PizzaConsultar.php';
+                                break;
+                        case 'Venta':
+                                include 'Funciones/AltaVenta.php"';
+                                break;
+                        case 'ConsultasVentas':
+                                include 'Funciones/ConsultasVentas.php';
+                                break;
+                        case 'Cargar':
+                                include 'Funciones/PizzaCarga.php';
+                                break;
+                        }
         break;
 }
-
-
-
-
-
 
 
 ?>

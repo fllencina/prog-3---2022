@@ -17,6 +17,7 @@ class usuario
 		$this->mail = $mail;
 		$this->fecha_de_registro=self::ObtenerFecha();
 		$this->ID=self::ObtieneIDUsuario();
+		
 		guardarFoto($foto, $nombre);
 	}
 	static function ObtenerFecha()

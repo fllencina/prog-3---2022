@@ -1,5 +1,6 @@
 <?php
     require_once "Usuario.php";
+    require_once "ManejadorArchivos.php";
 
     function InsertarUsuario($path)
     {
@@ -16,7 +17,7 @@
         array_push($arrayUsuarios, $Usuario4);
         array_push($arrayUsuarios, $Usuario5);
         
-        Usuario::Guardarcsv($path,$arrayUsuarios);
+        Guardarcsv($path,$arrayUsuarios);
         return $arrayUsuarios;
     }
 ?>

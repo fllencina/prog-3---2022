@@ -64,14 +64,19 @@ function Leercsv($path)
     }
     return $elementosArray;
 }
-function guardarFoto($file, $postNombre, $PathFotoBkp = null, $marcaDeAgua = false)
+function guardarFoto($file, $postNombre)
 {
-    //echo "guarda Foto";
-    if (!is_dir('Fotos')) {
-        mkdir('Fotos', 0777);
+    //echo "guardarFoto";
+    if (!is_dir('./Usuario/')) {
+        mkdir('./Usuario/', 0777);
     }
-
-    $dic = "./Fotos/";
+    if (!is_dir('./Usuario/Fotos')) {
+        mkdir('./Usuario/Fotos', 0777);
+    }
+    if (!is_dir('FotosBackup')) {
+        mkdir('FotosBackup', 0777);
+    }
+    $dic = "./Usuario/Fotos/";
     $dicBackup = "./FotosBackup/";
     $nameImagen = $file["archivo"]["name"];
 
@@ -82,51 +87,31 @@ function guardarFoto($file, $postNombre, $PathFotoBkp = null, $marcaDeAgua = fal
     $dic .= ".";
     $dic .= $explode[$tamaño - 1];
 
-
-
+    $hoy = date("m.d.y");
+    $dicBackup .= $postNombre;
+    $dicBackup .= "-" . $hoy;
+    $dicBackup .= ".";
+    $dicBackup .= $explode[$tamaño - 1];
     $Retorno = false;
     if (!file_exists($dic)) {
         $Retorno = move_uploaded_file($_FILES["archivo"]["tmp_name"], $dic);
     } else {
-
+        copy($dic, $dicBackup);
         $Retorno = move_uploaded_file($_FILES["archivo"]["tmp_name"], $dic);
     }
-
-    if ($PathFotoBkp != null) {
-        if (!is_dir('FotosBackup')) {
-            mkdir('FotosBackup', 0777);
-        }
-        $hoy = date("m.d.y");
-        $dicBackup .= $postNombre;
-        $dicBackup .= "-" . $hoy;
-        $dicBackup .= ".";
-        $dicBackup .= $explode[$tamaño - 1];
-        copy($dic, $dicBackup);
-    }
-    if ($marcaDeAgua) {
-        agregarMarcaDeAgua($dic);
-    }
+    //agregarMarcaDeAgua($dic);
     return $Retorno;
-}
-function GuardarFotos($fotos)
-{
-    foreach ($fotos["archivos"]["name"] as $archivo => $nombre) {
-        $datosFiles = explode(".", $nombre);
-        $extension = $datosFiles[1];
-        $destino = "upload/" . $datosFiles[0] . "@" . date("d-m.y") . '.' . $extension;
-        move_uploaded_file($_FILES["archivos"]["tmp_name"][$archivo], $destino);
-    }
 }
 function agregarMarcaDeAgua($ruta)
 {
-    //echo "en agregarMarcaDeAgua";
+    echo "en agregarMarcaDeAgua";
     // Cargar la estampa y la foto para aplicarle la marca de agua
-    $estampa = imagecreatefrompng('Fotos/ImagenMarcaDeAgua/marca2.png');
+    $estampa = imagecreatefrompng('./Usuario/Fotos/marca2.png');
     $im = imagecreatefromjpeg($ruta);
 
     // Establecer los márgenes para la estampa y obtener el alto/ancho de la imagen de la estampa
-    $margen_dcho = 10;
-    $margen_inf = 10;
+    $margen_dcho = 25;
+    $margen_inf = 25;
     $sx = imagesx($estampa);
     $sy = imagesy($estampa);
 
@@ -141,8 +126,7 @@ function agregarMarcaDeAgua($ruta)
 }
 function GuardarJson($arrayJson, $path, $dato)
 {
-    //var_dump($dato);
-    $strRet = "";
+    $strRet="";
     $fh = fopen($path, 'w+');
     fwrite($fh, "[");
     for ($i = 0; $i < count($arrayJson); $i++) {
@@ -193,6 +177,7 @@ function LeerJSON($path)
     }
     return $Array;
 }
+
 function base64_encode_image($path)
 {
     $type = pathinfo($path, PATHINFO_EXTENSION);

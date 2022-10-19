@@ -13,32 +13,32 @@
 // Lencina Fernanda
 
 require_once "Usuario.php";
-$path="C:\\xampp2\htdocs\\2022\clase3\Ejercicio20bis\Usuarios.csv";
+require_once "ManejadorArchivos.php";
+
+$path="./Usuarios.csv";
 $arrayUsuarios=[];
 switch($_SERVER['REQUEST_METHOD'])
 {
     case 'GET':
-    echo "<br>peticion por get";
+    //echo "<br>peticion por get";
     break;
     case 'POST':
     echo "<br>peticion por post";
-    if (isset ($_POST["mail"], $_POST["nombre"], $_POST["clave"]))
-	{
-		$mail=$_POST["mail"];
-		$Nombre=$_POST["nombre"];
-		$Clave=$_POST["clave"];
+        if (isset($_POST["mail"], $_POST["nombre"], $_POST["clave"])) {
+            $mail = $_POST["mail"];
+            $Nombre = $_POST["nombre"];
+            $Clave = $_POST["clave"];
 
-        $usuario=new Usuario($Nombre,$Clave,$mail);
-        array_push($arrayUsuarios, $usuario);
-             
-    }
-    Usuario::Guardarcsv($path,$arrayUsuarios);
-    $UsuariosLeidos= Usuario::Leercsv($path);
-    echo Usuario::MostrarLista($UsuariosLeidos);
+            $usuario = new Usuario($Nombre, $Clave, $mail);
+
+            array_push($arrayUsuarios, $usuario);
+            Guardarcsv($path, $arrayUsuarios);
+            $UsuariosLeidos = Leercsv($path);
+            echo Usuario::MostrarLista($UsuariosLeidos);
+        }
+    
     break;
 }
-
-
 
 
 ?>

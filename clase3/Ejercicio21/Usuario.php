@@ -1,86 +1,28 @@
 
 <?php
 
-class usuario{
-    public $nombre;
-    public $clave;
-    public $mail;
-
-function __construct($nombre,$clave,$mail)
+class usuario
 {
-    $this->nombre=$nombre;
-    $this->clave=$clave;
-    $this->mail=$mail;
+	public $nombre;
+	public $clave;
+	public $mail;
 
-}
-    static function Guardarcsv($path,$Array)
-{
-	//var_dump($Array);
-    
-	$retorno=false;
-	if(!file_exists($path))
+	function __construct($nombre, $clave, $mail)
 	{
-		$myfile = fopen($path, "w");
-		fclose($myfile);
-	}
-	 if(file_exists($path))
-	{
-		$file=fopen($path,"w+");
-		for($i=0;$i<count($Array);$i++)
-		{		
-			$linea=array($Array[$i]->nombre, $Array[$i]->clave ,$Array[$i]->mail);
-			if( fputcsv($file, $linea))
-			{			
-				$retorno= true;		
-			}	
-		}	
-		fclose($file);		
+		$this->nombre = $nombre;
+		$this->clave = $clave;
+		$this->mail = $mail;
 	}
 
-	return $retorno;
-}
-static function Leercsv($path)
-{
-	$elementosArray=[];
-	if(file_exists($path))
+	static function MostrarLista($UsuariosArray)
 	{
-		if(file_exists($path) )
-		{ 	
-			$file=fopen($path, "r");
-			
-			while (!feof($file)) {   				
-  				$linea = fgets($file);
-   				if(!empty($linea))
-   				{
-   					$datos=explode(",", $linea);  				
-	   				$nombre=$datos[0];
-	   				$clave=$datos[1];
-	   				$mail=$datos[2];
-	   				
-
-	  				$usuario= new Usuario($nombre,$clave,$mail);
-	  				array_push($elementosArray, $usuario);
-	  			}
-			}
-			fclose($file);	
+		$strRet = "<ul>";
+		for ($i = 0; $i < count($UsuariosArray); $i++) {
+			$strRet .= "<li>" . "nombre: " . $UsuariosArray[$i]->nombre . ", email: " . $UsuariosArray[$i]->mail . ", clave: " . $UsuariosArray[$i]->clave . "</li>";
 		}
-		return $elementosArray;
+		$strRet .= "</ul>";
+		return $strRet;
 	}
-	return $elementosArray;
-}
-
-static function MostrarLista($UsuariosArray)
-		{
-			$strRet="<ul>";
-			for($i=0;$i<count($UsuariosArray);$i++)
-			{
-				$strRet.="<li>". "nombre: " .$UsuariosArray[$i]->nombre . ", email: " .$UsuariosArray[$i]->clave . ", clave: " .$UsuariosArray[$i]->mail . "</li>";
-				
-			}
-			$strRet.="</ul>";
-			return $strRet;
-		}
-
 }
 
 

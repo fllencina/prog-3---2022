@@ -30,17 +30,24 @@ function Validar ($palabra,$max,$ListaPalabras)
 		return 0;
 	}
 
-    function InvertirCaracteres($Array)
-	{
-        $retorno='';
-		$invertida=array_reverse($Array);
-		$retorno=$retorno. "<br> Invertida: <br>";
+function InvertirCaracteres($Array)
+{
+	$retorno = '';
+	$invertida = array_reverse($Array);
+	$retorno = $retorno . "<br> Invertida: <br>";
 
-	for($i=0;$i<count($invertida);$i++)
-	{
-		$retorno=$retorno. $invertida[$i];
+	for ($i = 0; $i < count($invertida); $i++) {
+		$retorno = $retorno . $invertida[$i];
 	}
-    return $retorno;
-	}
+	return $retorno;
+}
 
+function InvertirCaracteresFor($Array)
+{
+	$retorno =  "<br> Invertida: <br>";
+	for ($i = count($Array) - 1; $i >= 0; $i--) {
+		$retorno=$retorno. $Array[$i];
+	}
+	return $retorno;
+}
 ?>

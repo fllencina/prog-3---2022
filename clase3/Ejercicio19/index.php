@@ -52,7 +52,7 @@ require_once "testing.php";
 
 
 //Crear dos objetos “Auto” de la misma marca y distinto color.
-$path="C:\\xampp2\htdocs\\2022\clase3\Ejercicio20\auto.csv";
+$path="./auto.csv";
 
 $Autos=array();
 $arrayAutosLeidoArchivo=Auto::Leercsv($path);

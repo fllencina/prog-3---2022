@@ -18,7 +18,7 @@ class usuario
 		$this->fecha_de_registro=self::ObtenerFecha();
 		$this->ID=self::ObtieneIDUsuario();
 		guardarFoto($foto, $nombre,$pathFotoBkp,$marcaDeAgua);
-		$dic = "./Fotos/";
+		$dic = "./Usuario/Fotos/";
 		$nameImagen = $foto["archivo"]["name"];
 	
 		$explode = explode(".", $nameImagen);
@@ -27,6 +27,7 @@ class usuario
 		$dic .= $nombre;
 		$dic .= ".";
 		$dic .= $explode[$tamaño - 1];
+		
 		$this->foto=base64_encode_image($dic);
 	}
 	static function ObtenerFecha()

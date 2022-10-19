@@ -1,7 +1,7 @@
 <!-- Aplicación No 25 ( AltaProducto)
 Archivo: altaProducto.php
 método:POST
-Recibe los datos del producto(código de barra (6 sifras ),nombre ,tipo, stock, precio )por POST
+Recibe los datos del producto(código de barra (6 cifras ),nombre ,tipo, stock, precio )por POST
 ,
 crea un ID autoincremental(emulado, puede ser un random de 1 a 10.000). crear un
 objeto y utilizar sus métodos para poder verificar si es un producto existente, si ya existe

@@ -11,7 +11,7 @@ function Guardarcsv($path, $Array, $modoApertura)
             $aperturaOK = true;
             break;
         case 'w+':
-            $file = fopen($path, "a+");
+            $file = fopen($path, "w+");
             $aperturaOK = true;
             break;
         default:

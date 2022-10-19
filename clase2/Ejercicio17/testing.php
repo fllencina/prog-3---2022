@@ -60,8 +60,8 @@ function CompararAutos($Array)
 //Comparar el primer “Auto” con el segundo y quinto objeto e informar si son iguales o no.
 $retorno='';
 $retorno= "<br><br>";
-    $strComparacion1;
-    $strComparacion2;
+    $strComparacion1='';
+    $strComparacion2='';
     if($Array[0]->Equals($Array[1]))
     {
     $strComparacion1="<br>Los autos comparados son iguales";

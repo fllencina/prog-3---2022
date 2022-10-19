@@ -17,18 +17,16 @@ function EsPar($numero)
 	return false;
 }
 //valida len y exitencia de una palabra en array
-function Validar ($palabra,$max,$ListaPalabras)
-	{
-		if(strlen($palabra)<$max)
-		{
-			 if(in_array($palabra, $ListaPalabras))
-			 {		 	
-			 	return 1;
-			 }
+function Validar($palabra, $max, $ListaPalabras)
+{
+	$aValidar= ucfirst(strtolower($palabra)) ;
+	if (strlen($aValidar) < $max) {
+		if (in_array($aValidar, $ListaPalabras)) {
+			return 1;
 		}
-		
-		return 0;
 	}
+	return 0;
+}
 
     function InvertirCaracteres($Array)
 	{
@@ -42,5 +40,3 @@ function Validar ($palabra,$max,$ListaPalabras)
 	}
     return $retorno;
 	}
-
-?>

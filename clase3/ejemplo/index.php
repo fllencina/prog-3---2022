@@ -3,10 +3,12 @@ echo "hola mundo";
 switch($_SERVER['REQUEST_METHOD'])
 {
     case 'GET':
-    echo "peticion por get";
+    echo "<br>peticion por get<br>";
+    echo "<br>" .$_GET['nombreusuario'] . ' - ' . $_GET['rol'];
+    echo "<br>". json_encode($_GET,true);
     break;
     case 'POST':
-    echo "peticion por post";
+    echo "<br>peticion por post";
     break;
 }
 

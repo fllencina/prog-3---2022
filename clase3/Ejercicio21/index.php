@@ -16,19 +16,20 @@ Lencina Fernanda -->
 <?php
 
 require_once "insertUsuarios.php";
+require_once "ManejadorArchivos.php";
 
-switch($_SERVER['REQUEST_METHOD'])
-{
+
+switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-$path="C:\\xampp2\htdocs\\2022\clase3\Ejercicio21\Usuarios.csv";
- InsertarUsuario($path);
-$arrayUsuarios= Usuario::Leercsv($path);
-echo Usuario::MostrarLista($arrayUsuarios);
-break;
-case 'POST':
-echo "<br>peticion por post";
-    break;
-    }
+        $path = "./Usuarios.csv";
+        // InsertarUsuario($path);
+        $arrayUsuarios = Leercsv($path);
+        echo Usuario::MostrarLista($arrayUsuarios);
+        break;
+    case 'POST':
+        echo "<br>peticion por post";
+        break;
+}
 
 
 ?>

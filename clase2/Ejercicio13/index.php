@@ -10,20 +10,20 @@ Lencina Fernanda -->
 <?php
 require "funciones.php";
 $arrayPalabras=array("Recuperatorio", "Parcial", "Programacion");
-	$Palabra_a_Validar="Recuperatorio";
-	echo "Palabra: ",$Palabra_a_Validar ,"<br>";
+	$Palabra_a_Validar="recuperaTorio";
+	$Mostrar= "Palabra: ".$Palabra_a_Validar ."<br>";
 
 	$retorno= Validar($Palabra_a_Validar,15,$arrayPalabras);
 	switch ($retorno) {
 		case '1':
-			echo "retorna: ",$retorno, " (la palabra pertenece a la lista )";
+			$Mostrar=$Mostrar. "retorna: ".$retorno. " (la palabra pertenece a la lista )";
 			break;
 		case '0':
-			echo "retorna: ",$retorno, " (la palabra no pertenece a la lista) ";
+			$Mostrar=$Mostrar. "retorna: ".$retorno. " (la palabra no pertenece a la lista) ";
 			break;
 		default:
 			# code...
 			break;
 	}
-
+	echo $Mostrar;
     ?>
